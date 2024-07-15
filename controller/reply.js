@@ -18,7 +18,7 @@ const reply = async (req,res) => {
       
       await parent_tweet.save();
 
-      res.status(201).json({ message: 'Reply posted successfully' });
+      res.status(201).json({ message: 'Reply posted successfully',ReplyCount: parent_tweet.replies.length});
   
     } catch (error) {
         res.status(500).json({error:error.message})

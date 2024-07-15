@@ -19,7 +19,8 @@ const retweet = async (req,res) => {
         tweet.retweetBy.push(req.user.id); 
         
         await tweet.save()
-       
+        
+
         res.status(201).json({message:'retweet successful',tweet:tweet,ReTweetUser:req.user.UserName,count:tweet.retweetBy.length})
     
 }

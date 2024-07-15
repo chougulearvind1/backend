@@ -3,7 +3,7 @@ const path = require('path');
 
 const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
-console.log(file,'multer middleware',JSON.stringify(req.body));
+
         if(req.originalUrl.startsWith('/API/auth/register'))
             {
                  cb(null,'./profile_img/')

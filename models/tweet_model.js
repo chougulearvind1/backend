@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('./user');
+const mongooseHistory = require('mongoose-history');
+
 const TweetSchema=new mongoose.Schema({
     content:{
         type:String,
@@ -27,6 +29,8 @@ const TweetSchema=new mongoose.Schema({
         ref:'tweets'
     }]
 },{timestamps:true});
+
+TweetSchema.plugin( mongooseHistory)
 const tweets= mongoose.model('tweets',TweetSchema);
 
 module.exports=tweets;

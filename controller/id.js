@@ -14,9 +14,9 @@ const id=async (req,res,next) => {
     }
     next();
     res.status(200).json(user);
-    console.log(user,'user');
-     
+   
   } catch (error) {
+    console.log(error,'error');
       res.status(500).json({message:'server error',error:error.message})
   }
 }

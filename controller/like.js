@@ -23,7 +23,7 @@ const like=async (req,res) => {
           let LikeCount=tweet.likes.length;
           
           await tweet.save();
-          res.status(200).json({message:tweet,IsLike:true,LikeCount:LikeCount})
+          res.status(200).json({message:"you Liked tweet",IsLike:true,LikeCount:LikeCount})
           
     } catch (error) {
         res.status(500).json({message:error.message})

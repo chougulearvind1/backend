@@ -20,7 +20,7 @@ const tweet=async (req,res) => {
         
        if (req.originalUrl==='/API/tweet/' ){
         
-        return res.status(200).json({message:'tweeted'})
+        return res.status(200).json({message:'tweeted',Tweet:tweet_save})
        }
        
        return tweet_save;

@@ -14,6 +14,7 @@ const retweet = require('../controller/retweet');
 
 
 try {
+   
    router.post('/tweet',authenticate,upload.single('image'),tweet )
    router.post('/tweet/:id/like',authenticate,like)
    router.post('/tweet/:id/dislike',authenticate,dislike)

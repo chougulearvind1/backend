@@ -19,8 +19,11 @@
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.3.4",
+    "mongoose": "^8.4.4",
+    "mongoose-history": "^0.8.0",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "raw-body": "^2.5.2"
   }
 }
