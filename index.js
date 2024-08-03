@@ -25,11 +25,12 @@ console.log('server  ',port ,process.env.MONGO_URL);
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log('connected'))
-.catch(() => {console.log("error while connecting")});
+.catch((error) => {console.log("error while connecting",error)});
 
 app.use('/API',auth_routes);
 app.use('/API',user_routes);
 app.use('/API',tweet_routes)
+
 
 
 
