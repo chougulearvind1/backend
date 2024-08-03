@@ -23,7 +23,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = process.env.PORT || 4000;
 console.log('server  ',port ,process.env.MONGO_URL);
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 .then(()=>console.log('connected'))
 .catch((error) => {console.log("error while connecting",error)});
 
