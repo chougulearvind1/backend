@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json({ limit: "50mb" }))
 // app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
-
+const port = process.env.PORT || 4000;
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log('connected'))
 .catch(() => {console.log("error while connecting")});
@@ -31,7 +31,7 @@ app.use('/API',tweet_routes)
 
 
 
-app.listen(process.env.PORT,() => {
+app.listen(port,() => {
 
-    console.log('server is listening on port ',process.env.PORT)
+    console.log('server is listening on port ',port)
 })
