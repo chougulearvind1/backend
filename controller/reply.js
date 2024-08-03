@@ -7,8 +7,6 @@ const reply = async (req,res) => {
       const reply_tweet=await tweet(req,res);
       const p_tweet=req.params.id;
       const parent_tweet= await Tweet_model.findById(p_tweet);
-      console.log(p_tweet)
-      console.log(parent_tweet,'parent tweet')
       if(!parent_tweet){
 
         return res.status(404).json({message:'Tweet not found'})

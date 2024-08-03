@@ -11,7 +11,7 @@ const uploadProfilePic = async (req,res,next) => {
 
   }
   try {
-    const user=await User.findById(paramsId);
+    const user=await User.findByIdAndUpdate(paramsId,{$set:{ updatedAt: new Date()}});
     if(!user){
       return res.status(404).json({messsage:'user not found'})    }
        
@@ -24,6 +24,7 @@ const uploadProfilePic = async (req,res,next) => {
       } 
     }
      )
+     
 
 
     res.status(200).json({message:'profile picture uploaded'})

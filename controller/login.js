@@ -28,7 +28,7 @@ const login=async (req,res) => {
         if (match) {        
          const token=await jsonwebtoken.sign(payload,process.env.JWT_SECRET_KEY) 
          res.cookie('token',token,{httpOnly:true})               
-           return res.status(200).json({message:"Logged in sucessfully.",token,success:true,UserName:user.UserName,Name:user.Name,id:user.id})
+           return res.status(200).json({message:"Logged in sucessfully.",token,success:true,UserName:user.UserName,Name:user.Name,id:user.id,LoggedUser:user})
                    
          
         } else {

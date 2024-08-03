@@ -3,13 +3,13 @@ const user = require('../models/user');
 
 const following=async (req,res,next) => {
   try {
-    console.log(req.user,'params id')
+    
   const loggedInUserId=req.user.id;// get id of Login user
   const  userToFollowId=req.params.id;// get id of user to follow
   const loggedInUser=await user.findById(loggedInUserId); //get login user data for follow and follwing
   const  userToFollow= await user.findById(userToFollowId);//get following  if for insert into logged user
   if(!loggedInUser||!userToFollow){
-    return res.status(404).json({message:'User Not found'});       // if both data not get you cant insert to check it firstly 
+    return res.status(404).json({message:'User Not found'});       // if both data not get you cant insert ,so check it firstly 
   }
   //user not follwing or follower if it already follows 
   if(loggedInUser.following.includes(userToFollowId)){

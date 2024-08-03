@@ -5,8 +5,10 @@ const User = require('../models/user');
 //Endpoint POST/api/user/:id/unfollow
 const unfollow=async (req ,res,next) => {
   try {
+   
+      const loggedInUserId=req.user.id;
     
-    const loggedInUserId=req.User.id;
+    
     const userToUnfollowId =req.params.id;
 
     const loggedInUser= await User.findById(loggedInUserId);
@@ -29,7 +31,7 @@ const unfollow=async (req ,res,next) => {
     next()
     res.status(200).json({message:'user unfollwed sucessfully'})
   } catch (error) {
-   
+     console.log(error,'error');
     res.status(500).json({message:'server error',error:error.message});
 
   }

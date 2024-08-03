@@ -14,7 +14,7 @@ try {
       if (!tweet) {
        return res.status(404).json({message:'tweet not found to delete tweet'})
       }
-     await tweets.deleteMany({_id:{$in:tweet.replies}})
+    //  await tweets.deleteMany({_id:{$in:tweet.replies}})
       const del=await tweets.findByIdAndDelete(tweetId)
       return res.status(200).json({message:'Tweet Deleted sucessfully',deleted_user:del})
             

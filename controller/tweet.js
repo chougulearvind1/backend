@@ -16,13 +16,13 @@ const tweet=async (req,res) => {
     try {
         const tweet_post= new Tweet(tweet_data);
      
-        const tweet_save=await tweet_post.save()
+        const tweet_save=await tweet_post.save();
+        let   ReturnTweet={...tweet_save.toObject()}
+          ReturnTweet.tweetedBy=req.user
         
        if (req.originalUrl==='/API/tweet/' ){
-        
-        return res.status(200).json({message:'tweeted',Tweet:tweet_save})
-       }
-       
+        return res.status(200).json({message:'tweeted',Tweet:ReturnTweet})
+       }       
        return tweet_save;
     } catch (error) {
         res.status(500).json({error:error.message,message:'failed to create tweet'})

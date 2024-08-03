@@ -34,11 +34,11 @@ const UserSchema= new mongoose.Schema({
   },
   followers:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:[this]
+    ref:'User'
   }],
   following:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:[this]
+    ref:'User'
   }]
 
 },{timestamps:true});

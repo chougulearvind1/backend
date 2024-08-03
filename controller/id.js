@@ -1,4 +1,5 @@
 
+const tweets = require('../models/tweet_model');
 const User = require('../models/user');
 
 const id=async (req,res,next) => {
@@ -6,14 +7,18 @@ const id=async (req,res,next) => {
 
     const userId=req.params.id;
     const user= await User.findById(userId,{password:0})
-    .populate('following','Name','User')
-    .populate('followers','Name','User');
+    .populate('following','-password')
+    .populate('followers','-password')
+     
+    // const UserAllTweet=await tweets.aggregate([{$match:{tweetedBy:user._id}}])
     if(!user){
         return res.status(404).json({message:'User not found'})
 
     }
+    
+    res.status(200).json({user:user});
     next();
-    res.status(200).json(user);
+    
    
   } catch (error) {
     console.log(error,'error');

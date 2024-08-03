@@ -6,7 +6,7 @@ const all_tweets =async (req,res) => {
    
             const Tweet=await tweets.find()
                 .populate('tweetedBy','-password')
-                .populate('replies','-password')                
+                .populate('replies')                
                 .populate('likes','-password')
                 .populate('retweetBy','-password')
                 .sort({ createdAt: -1 })

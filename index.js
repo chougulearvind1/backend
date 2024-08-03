@@ -33,5 +33,5 @@ app.use('/API',tweet_routes)
 
 app.listen(process.env.PORT,() => {
 
-    console.log('server is listening on port k',process.env.PORT)
+    console.log('server is listening on port ',process.env.PORT)
 })
