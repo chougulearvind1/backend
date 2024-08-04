@@ -49,11 +49,9 @@ let check_unique=await User.findOne({Email}) ;
   const new_user=new User({location,date_of_birth:dob,Name,UserName,Email,password:hash_password,profle_picture:req.file});
   console.log(new_user)
   const resp=new_user.save();
-  if (resp) {
-   
+  if (resp) {   
     res.status(201).json({message:"user registerd Sucessfully",success:true})
-  }
- 
+  } 
   } catch (error) {
     console.log(error)
   }

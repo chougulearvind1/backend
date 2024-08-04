@@ -14,7 +14,13 @@ const {tweet_routes} = require('./routes/tweet_routes');
 app.use('/profile_img',express.static(path.join('profile_img')))
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
-app.use(cors())
+app.use(cors(
+    {
+        origin: 'http://localhost:3000', // Allow requests from this origin
+        methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+        credentials: true // Allow credentials (cookies, authorization headers, etc.)
+      }
+))
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,8 +30,7 @@ const port = process.env.PORT || 4000;
 console.log('server  ',port ,process.env.MONGO_URL);
 
 mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+        family: 4
 })
 .then(()=>console.log('connected'))
 .catch((error) => {console.log("error while connecting",error)});
