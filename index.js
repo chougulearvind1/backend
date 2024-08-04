@@ -14,14 +14,13 @@ const {tweet_routes} = require('./routes/tweet_routes');
 app.use('/profile_img',express.static(path.join('profile_img')))
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
-app.use(cors())
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors({ 
+    origin: ['http://localhost:3000', 'https://dashing-sable-4fab70.netlify.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE','HEAD','PATCH'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
+    preflightContinue:true
+}))
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
