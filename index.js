@@ -14,13 +14,7 @@ const {tweet_routes} = require('./routes/tweet_routes');
 app.use('/profile_img',express.static(path.join('profile_img')))
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
-app.use(cors(
-    {
-        origin: ['*'] , // Allow requests from this origin
-        methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-        credentials: true // Allow credentials (cookies, authorization headers, etc.)
-      }
-))
+app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
