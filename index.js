@@ -16,7 +16,7 @@ app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
 app.use(cors(
     {
-        origin: 'http://localhost:3000', // Allow requests from this origin
+        origin: '*', // Allow requests from this origin
         methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
         credentials: true // Allow credentials (cookies, authorization headers, etc.)
       }
