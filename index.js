@@ -10,8 +10,8 @@ const app=express();
 const {auth_routes}=require('./routes/auth_routes')
 const {user_routes} = require('./routes/user_routes');
 const {tweet_routes} = require('./routes/tweet_routes');
-
-app.use('/profile_img',express.static(path.join('profile_img')))
+try {
+    app.use('/profile_img',express.static(path.join('profile_img')))
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
 app.use(cors({ 
@@ -46,3 +46,8 @@ app.listen(port,() => {
 
     console.log('server is listening on port ',port)
 })
+
+} catch (error) {
+    console.log(error,'index error');
+    
+}
