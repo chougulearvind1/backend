@@ -16,7 +16,7 @@ app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
 app.use(cors(
     {
-        origin: ['*'] , // Allow requests from this origin
+        origin: ['*','https://dashing-sable-4fab70.netlify.app'] , // Allow requests from this origin
         methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
         credentials: true // Allow credentials (cookies, authorization headers, etc.)
       }
