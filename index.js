@@ -14,7 +14,11 @@ const {tweet_routes} = require('./routes/tweet_routes');
 app.use('/profile_img',express.static(path.join('profile_img')))
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
-app.use(cors())
+app.use(cors({ 
+    origin: ['http://localhost:3000', 'https://dashing-sable-4fab70.netlify.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}))
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
