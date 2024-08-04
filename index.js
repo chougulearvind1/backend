@@ -17,7 +17,8 @@ app.use(morgan('dev'));
 app.use(cors({ 
     origin: ['http://localhost:3000', 'https://dashing-sable-4fab70.netlify.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization']
 }))
 app.use(express.json())
 app.use(bodyParser.json())
