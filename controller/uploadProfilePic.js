@@ -1,7 +1,5 @@
 const User = require("../models/user");
-const fs = require('fs');
-const upload=require('../middleware/multer_middleware');
-const { type } = require("os");
+
 const uploadProfilePic = async (req,res,next) => {
  
   const loggedUserId=req.user.id;
@@ -40,7 +38,7 @@ if (await result.success) {
           user.profle_picture=profle_picture1;
         }
         
-        console.log(user.profle_picture,'profile');
+        console.log(user.profle_picture,'profile',IMGUR_CLIENT_ID);
          const userResult= await  user.save();
          console.log(userResult,'user result');
 }
