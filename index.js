@@ -28,8 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json({ limit: "50mb" }))
 // app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 const port = process.env.PORT || 4000;
-console.log('server  ',port ,process.env.MONGO_URL);
-
 mongoose.connect(process.env.MONGO_URL,{
         family: 4
 })
