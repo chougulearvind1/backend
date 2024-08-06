@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const fs = require('fs');
-const upload=require('../middleware/multer_middleware')
+const upload=require('../middleware/multer_middleware');
+const { type } = require("os");
 const uploadProfilePic = async (req,res,next) => {
  
   const loggedUserId=req.user.id;
@@ -11,21 +12,47 @@ const uploadProfilePic = async (req,res,next) => {
 
   }
   try {
-    const user=await User.findByIdAndUpdate(paramsId,{$set:{ updatedAt: new Date()}});
+    const user=await User.findById(paramsId,'-password');
     if(!user){
-      return res.status(404).json({messsage:'user not found'})    }
-       
-    const old_file=user.profle_picture.destination+user.profle_picture.filename;   
-      console.log(old_file,'old file',req.body);   
-    
-        await fs.writeFile(old_file, req.body ,(error) => {
-      if (error) {
-        throw error;
-      } 
+      return res.status(404).json({messsage:'user not found'})    
     }
-     )
+       const base64String= req.body.toString('base64')
+       const response = await fetch('https://api.imgur.com/3/image', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          image: base64String,
+          type: 'base64'
+        })
+      });
+      const result=await response.json()
+if (result.success) {
+        
+        profle_picture1={...user.profle_picture} ||{}
+        if(profle_picture1){
+          profle_picture1.filename=result.data.link;
+          user.profle_picture=profle_picture1;
+        }
+        
+        console.log(user.profle_picture,'profile');
+         const userResult= await  user.save();
+         console.log(userResult,'user result');
+}
+      
+    // const old_file=user.profle_picture.destination+user.profle_picture.filename;   
+    //   console.log(old_file,'old file',req.body);   
+    
+    //     await fs.writeFile(old_file, req.body ,(error) => {
+    //   if (error) {
+    //     throw error;
+    //   } 
+    // }
+    //  )
      
-
+     
 
     res.status(200).json({message:'profile picture uploaded'})
 
