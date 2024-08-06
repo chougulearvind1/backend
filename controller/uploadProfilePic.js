@@ -13,6 +13,7 @@ const uploadProfilePic = async (req,res,next) => {
   }
   try {
     const user=await User.findById(paramsId,'-password');
+    console.log(user,"user" ,req.body);
     if(!user){
       return res.status(404).json({messsage:'user not found'})    
     }
@@ -28,7 +29,8 @@ const uploadProfilePic = async (req,res,next) => {
           type: 'base64'
         })
       });
-      const result=await response.json()
+      const result=await response.json();
+      console.log(result,'result');
 if (result.success) {
         
         profle_picture1={...user.profle_picture} ||{}
