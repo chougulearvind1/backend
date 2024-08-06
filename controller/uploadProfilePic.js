@@ -17,7 +17,8 @@ const uploadProfilePic = async (req,res,next) => {
     if(!user){
       return res.status(404).json({messsage:'user not found'})    
     }
-       const base64String= req.body.toString('base64')
+      const body = await req.body
+       const base64String= await body.toString('base64')
        const response = await fetch('https://api.imgur.com/3/image', {
         method: 'POST',
         headers: {
@@ -25,13 +26,13 @@ const uploadProfilePic = async (req,res,next) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          image: base64String,
+          image: await base64String,
           type: 'base64'
         })
       });
       const result=await response.json();
       console.log(result,'result');
-if (result.success) {
+if (await result.success) {
         
         profle_picture1={...user.profle_picture} ||{}
         if(profle_picture1){
