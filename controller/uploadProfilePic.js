@@ -20,7 +20,7 @@ const uploadProfilePic = async (req,res,next) => {
        const response = await fetch('https://api.imgur.com/3/image', {
         method: 'POST',
         headers: {
-          'Authorization': `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
+          'Authorization': `Client-ID eaa645299a66810`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -38,7 +38,7 @@ if (await result.success) {
           user.profle_picture=profle_picture1;
         }
         
-        console.log(user.profle_picture,'profile',process.env.IMGUR_CLIENT_ID);
+        console.log(user.profle_picture,'profile');
          const userResult= await  user.save();
          console.log(userResult,'user result');
 }
