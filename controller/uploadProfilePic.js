@@ -30,8 +30,8 @@ const uploadProfilePic = async (req,res,next) => {
       });
       const result=await response.json();
       console.log(result,'result');
-      console.log('Imgur Client ID:', imgurClientId);
-  res.send(`Imgur Client ID: ${imgurClientId || 'not set'}`);
+      console.log('Imgur Client ID:', process.env);
+  // res.send(`Imgur Client ID: ${imgurClientId || 'not set'}`);
 if (await result.success) {
         
         profle_picture1={...user.profle_picture} ||{}
@@ -57,7 +57,7 @@ if (await result.success) {
      
      
 
-    // res.status(200).json({message:'profile picture uploaded'})
+    res.status(200).json({message:'profile picture uploaded'})
 
   } catch (error) {
     console.log(error,"error profile pic");
