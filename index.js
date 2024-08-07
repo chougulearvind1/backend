@@ -15,7 +15,7 @@ try {
 app.use('/tweets',express.static(path.join('tweets')))
 app.use(morgan('dev'));
 app.use(cors({ 
-    origin: ['http://localhost:3000', 'https://twitter-abc.netlify.app'],
+    origin: ['http://localhost:5000', 'https://twitter-abc.netlify.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE','HEAD','PATCH'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization']
