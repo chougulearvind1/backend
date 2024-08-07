@@ -41,7 +41,7 @@ if (await result.success) {
           user.profle_picture=profle_picture1;
         }
         
-        console.log(user.profle_picture,'profile');
+        console.log(user.profle_picture,'profile2');
          const userResult= await  user.save();
          console.log(userResult,'user result');
 }
