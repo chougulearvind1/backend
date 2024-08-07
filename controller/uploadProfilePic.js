@@ -31,7 +31,7 @@ const uploadProfilePic = async (req,res,next) => {
       const result=await response.json();
       console.log(result,'result');
       console.log('Imgur Client ID:', process.env);
-  res.send(`Imgur Client ID: ${imgurClientId || 'not set'}`);
+  res.send(`Imgur Client ID: ${process.dnv.IMGUR_CLIENT_ID} || 'not set'}`);
 if (await result.success) {
         
         profle_picture1={...user.profle_picture} ||{}
