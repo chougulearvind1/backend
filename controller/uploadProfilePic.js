@@ -15,7 +15,7 @@ const uploadProfilePic = async (req,res,next) => {
     if(!user){
       return res.status(404).json({messsage:'user not found'})    
     }
-      const body = await req.body
+      const body = await Buffer.from(req.body)
        const base64String= await body.toString('base64')
        const response = await fetch('https://api.imgur.com/3/image', {
         method: 'POST',
@@ -30,8 +30,6 @@ const uploadProfilePic = async (req,res,next) => {
       });
       const result=await response.json();
       console.log(result,'result');
-      console.log('Imgur Client ID:', process.env);
-      console.log(`Imgur Client ID: ${process.env.IMGUR_CLIENT_ID} || 'not set'`)
   res.send(`Imgur Client ID: ${process.env.IMGUR_CLIENT_ID} || 'not set'}`);
 if (await result.success) {
         
