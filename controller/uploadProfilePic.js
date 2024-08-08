@@ -23,7 +23,8 @@ const uploadProfilePic = async (req,res,next) => {
         method: 'POST',
         headers: {
           'Authorization': `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'User-Agent': 'PostmanRuntime/7.41.0'
         },
         body: JSON.stringify({
           image: base64String,
