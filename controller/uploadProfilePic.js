@@ -11,10 +11,11 @@ const uploadProfilePic = async (req,res,next) => {
   }
   try {
     const user=await User.findById(paramsId,'-password');
-    console.log(user,"user" ,req.body);
+    console.log("user" ,req);
     if(!user){
       return res.status(404).json({messsage:'user not found'})    
     }
+    
       const body = await req.body;
      const buffer = Buffer.from(await body)
        const base64String= buffer.toString('base64')
