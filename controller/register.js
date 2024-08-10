@@ -38,8 +38,8 @@ let check_unique=await User.findOne({Email}) ;
       encoding: '7bit',
       mimetype: 'image/png',
       destination: './profile_img/',
-      filename: 'profle_picture1720936692836-0.6508013230226308.png',
-      path: 'profile_img\\profle_picture1720936692836-0.6508013230226308.png',
+      filename: 'profle_picture1720936692836-0.6508013230226308.jpg',
+      path: 'profile_img\\profle_picture1720936692836-0.6508013230226308.jpg',
       size: 620021
     }
   

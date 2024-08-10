@@ -11,6 +11,21 @@ const tweet=async (req,res) => {
   const tweet_data={content, tweetedBy}
  
   if(req.file){
+    const resp = await fetch(`https://api.github.com/repos/chougulearvind1/images/contents/${await req.file.path}`, {
+      method: 'PUT',
+      headers: {
+        'user-agent': 'request',
+        'Authorization': `token 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`,
+        'Content-Type': 'application/json' 
+    },
+      body: JSON.stringify({
+        message: user.profle_picture.filename+Date.now(),
+        content: base64String,
+        type: 'base64',
+        branch:'main'                      
+      })
+    });
+    console.log(resp,'resp')
     tweet_data.image=req.file.path;
   }
     try {
