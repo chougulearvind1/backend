@@ -19,8 +19,8 @@ const tweet=async (req,res) => {
         'Content-Type': 'application/json' 
     },
       body: JSON.stringify({
-        message: user.profle_picture.filename+Date.now(),
-        content: base64String,
+        message: Date.now(),
+        content: req.file.buffer,
         type: 'base64',
         branch:'main'                      
       })
