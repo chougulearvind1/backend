@@ -18,7 +18,6 @@ const uploadProfilePic = async (req,res,next) => {
       const body = await req.body;
      const buffer = Buffer.from(await body)
        const base64String= buffer.toString('base64')
-       console.log('file name',user.profle_picture.filename)
        const response = await fetch(`https://api.github.com/repos/chougulearvind1/images/contents/img/${await user.profle_picture.filename}`, {
         headers: {
             'User-Agent': 'request',
