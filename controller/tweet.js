@@ -27,7 +27,7 @@ const tweet=async (req,res) => {
         branch:'main'                      
       })
     });
-    console.log(resp,'resp')
+   
     tweet_data.image=req.file.originalname;
   }
     try {
