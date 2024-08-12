@@ -26,6 +26,13 @@ const storage=multer.memoryStorage({
 const fileFilter=(req,file,cb)=>{
     
     const filetype=/image\/jpeg|image\/jpg|image\/png/;
+  
+        
+        const unique_suffix= Date.now()+'-'+Math.random(Math.random()*1e9);
+        const file_extension= file.originalname.split('.').pop();
+        const fileName=file.fieldname +unique_suffix+'.'+file_extension
+        file.originalname=fileName;
+       
     
     const mimetype =  filetype.test(file.mimetype)
     if (mimetype ) {
