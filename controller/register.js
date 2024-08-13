@@ -30,11 +30,9 @@ let check_unique=await User.findOne({Email}) ;
   }
   let dob='';
   if(req.body.date_of_birth){dob=new Date(date_of_birth)}
-  // if  Profile_image not getting from user then add defaultimage profile to user
-   
   
   const hash_password = await bcrypt.hash(password,7)
-  const new_user=new User({location,date_of_birth:dob,Name,UserName,Email,password:hash_password,profle_picture:req.file});
+  const new_user=new User({location,date_of_birth:dob,Name,UserName,Email,password:hash_password});
   console.log(new_user)
   const resp=new_user.save();
   if (resp) {   
