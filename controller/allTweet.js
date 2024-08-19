@@ -2,14 +2,43 @@ const tweets = require("../models/tweet_model");
 
 const all_tweets =async (req,res) => {
     try {
-        console.log('all tweet is called ')
+        const result= await tweets.aggregate([
+            {    
+              $unwind:{path:"$replies",preserveNullAndEmptyArrays:true}
+            },
+            {
+              $group:{
+                _id:null,
+                allTweetIds:{$addToSet:"$_id"},
+                replyTweetIds:{$addToSet:"$replies"}
+              }
+            },
+            {
+              $project:{
+                allTweetIds:1,
+                filterTweetIds:{
+                  $setDifference:[
+                    "$allTweetIds",{
+                      $filter:{
+                        input:"$replyTweetIds",
+                        as:"replyId",
+                        cond:{$ne:["$$replyId",null]}
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+           ])
+           console.log('ids',result)
+           const TweetIds=result[0]?.filterTweetIds || [];
    
-            const Tweet=await tweets.find()
+            const Tweet=await tweets.find({_id:{$in:TweetIds}})
                 .populate('tweetedBy','-password')
                 .populate('replies')                
                 .populate('likes','-password')
                 .populate('retweetBy','-password')
-                .sort({ createdAt: -1 })
+                .sort({ createdAt: -1 }).lean()
   
             
 if (!Tweet) {
