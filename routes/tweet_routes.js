@@ -19,7 +19,7 @@ try {
    router.post('/tweet/:id/like',authenticate,like)
    router.post('/tweet/:id/dislike',authenticate,dislike)
    router.post('/tweet/:id/reply',authenticate,reply)
-   router.get('/tweet/:id',authenticate,tweet_details)
+   router.get('/tweet/:id',tweet_details)
    router.get('/tweet',all_tweets )
    router.delete('/tweet/:id',authenticate,deleteTweet)
    router.post('/tweet/:id/retweet',authenticate,retweet)
