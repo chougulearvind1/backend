@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json({ limit: "50mb" }))
 // app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 const port = process.env.PORT || 4000;
-mongoose.connect(process.env.MONGO_URL,{
+mongoose.connect('mongodb+srv://chougulearvind1:abc@cluster0.a0wg73m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',{
         family: 4
 })
 .then(()=>console.log('connected'))
